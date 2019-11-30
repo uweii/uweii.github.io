@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="goodnight, Uwei&#39;s Blob">
+    <meta name="keywords" content="goodnight, coding">
     <meta name="description" content="偶 然我是天空里的一片云，
 偶尔投影在你的波心。
 你不必讶异，更无须欢喜，
@@ -310,6 +310,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -468,6 +481,11 @@
 
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    131
+                </div>
                 
 
                 
@@ -752,8 +770,7 @@
                 <a href="/2019/11/30/morning/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="morning">
+                        <img src="/images/1.jpeg" class="responsive-img" alt="morning">
                         
                         <span class="card-title">morning</span>
                     </div>
@@ -762,10 +779,6 @@
                     <div class="summary block-with-text">
                         
                             一大早起来，使用mac制作windwos10启动U盘。
-
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            i
                         
                     </div>
                     <div class="publish-info">
@@ -787,8 +800,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A9%E6%99%A8/">
-                        <span class="chip bg-color">早晨</span>
+                    <a href="/tags/tag1/">
+                        <span class="chip bg-color">tag1</span>
+                    </a>
+                    
+                    <a href="/tags/tag2/">
+                        <span class="chip bg-color">tag2</span>
                     </a>
                     
                 </div>
@@ -1010,6 +1027,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Github&nbsp;<a href="https://github.com/uweii" target="_blank">GitHub</a>
             <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">898</span>&nbsp;字
             
             
             

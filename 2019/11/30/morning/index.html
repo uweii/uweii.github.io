@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="morning, Uwei&#39;s Blob">
+    <meta name="keywords" content="morning, coding">
     <meta name="description" content="一大早起来，使用mac制作windwos10启动U盘。
 
         document.querySelectorAll(&#39;.github-emoji&#39;)
@@ -305,10 +305,23 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/1.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -432,8 +445,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A9%E6%99%A8/">
-                                <span class="chip bg-color">早晨</span>
+                            <a href="/tags/tag1/">
+                                <span class="chip bg-color">tag1</span>
+                            </a>
+                        
+                            <a href="/tags/tag2/">
+                                <span class="chip bg-color">tag2</span>
                             </a>
                         
                     </div>
@@ -463,6 +480,11 @@
 
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    65
+                </div>
                 
 
                 
@@ -566,8 +588,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A9%E6%99%A8/">
-                                    <span class="chip bg-color">早晨</span>
+                                <a href="/tags/tag1/">
+                                    <span class="chip bg-color">tag1</span>
+                                </a>
+                            
+                                <a href="/tags/tag2/">
+                                    <span class="chip bg-color">tag2</span>
                                 </a>
                             
                         </div>
@@ -733,52 +759,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/30/morning/">
+                <a href="/2019/11/30/ifiloveu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="morning">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="致橡树">
                         
-                        <span class="card-title">morning</span>
+                        <span class="card-title">致橡树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一大早起来，使用mac制作windwos10启动U盘。
-
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            i
+                            绝不像攀援的凌霄花，借你的高枝炫耀自己.
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A9%E6%99%A8/" class="post-category">
-                                    早晨
+                            <a href="/categories/%E8%AF%97%E6%96%87/" class="post-category">
+                                    诗文
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A9%E6%99%A8/">
-                        <span class="chip bg-color">早晨</span>
+                    <a href="/tags/%E7%BE%8E%E6%96%87/">
+                        <span class="chip bg-color">美文</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%87%B4%E6%A9%A1%E6%A0%91/">
+                        <span class="chip bg-color">致橡树</span>
                     </a>
                     
                 </div>
@@ -1021,6 +1045,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Github&nbsp;<a href="https://github.com/uweii" target="_blank">GitHub</a>
             <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">898</span>&nbsp;字
             
             
             
