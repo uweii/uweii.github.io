@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-01T15:57:23.003Z</updated>
+  <updated>2019-12-03T13:00:17.703Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring-data-jpa</title>
+    <link href="https://uweii.github.io/2019/12/03/spring-data-jpa/"/>
+    <id>https://uweii.github.io/2019/12/03/spring-data-jpa/</id>
+    <published>2019-12-03T12:41:41.000Z</published>
+    <updated>2019-12-03T13:00:17.703Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;​    &lt;code&gt;JPA(Java Persistence API)&lt;/code&gt; 是Sun官方提出的 Java &lt;code&gt;持久化规范&lt;/code&gt; . 所谓规范即定义 &lt;strong&gt;标准规则&lt;/strong&gt; , 不提供实现.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="spring-data-jpa" scheme="https://uweii.github.io/categories/spring-data-jpa/"/>
+    
+      <category term="java后台" scheme="https://uweii.github.io/categories/spring-data-jpa/java%E5%90%8E%E5%8F%B0/"/>
+    
+    
+      <category term="spring" scheme="https://uweii.github.io/tags/spring/"/>
+    
+      <category term="jpa" scheme="https://uweii.github.io/tags/jpa/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot集成druid</title>

@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>spring-data-jpa</title>
+      <link href="/2019/12/03/spring-data-jpa/"/>
+      <url>/2019/12/03/spring-data-jpa/</url>
+      
+        <content type="html"><![CDATA[<p>​    <code>JPA(Java Persistence API)</code> 是Sun官方提出的 Java <code>持久化规范</code> . 所谓规范即定义 <strong>标准规则</strong> , 不提供实现. 而</p><p>JPA的主要实现有 <code>Hiberbnate</code> , <code>EclipseLink</code> , <code>OpenJPA</code>等. JPA是一套规范, 不是一套产品. Hiberbnate 是一套产</p><p>品, 如果这些产品实现了JPA规范,那么我们可以称其为JPA的实现产品.</p><p>​    </p><p>Spring Data JPA 是 Spring Data 的一个子项目, 通过提供基于 <code>JPA</code> 的 Repository 极大地减少了JPA作为数据访</p><p>问方案的代码量. 通过Spring Data JPA框架, 开发者可以省略实现持久层业务逻辑的工作, 唯一要做的就是声明持久</p><p>层的接口, 其他都交给Spring Data JPA 来完成.</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> spring-data-jpa </category>
+          
+          <category> java后台 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> spring </tag>
+            
+            <tag> jpa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>springboot集成druid</title>
       <link href="/2019/12/01/springboot-druid/"/>
       <url>/2019/12/01/springboot-druid/</url>
