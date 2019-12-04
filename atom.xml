@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-04T03:09:44.707Z</updated>
+  <updated>2019-12-04T15:06:57.636Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot-annotation</title>
+    <link href="https://uweii.github.io/2019/12/04/springboot-annotation/"/>
+    <id>https://uweii.github.io/2019/12/04/springboot-annotation/</id>
+    <published>2019-12-04T14:42:49.000Z</published>
+    <updated>2019-12-04T15:06:57.636Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Spring常用注解含义&quot;&gt;&lt;a href=&quot;#Spring常用注解含义&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java后台" scheme="https://uweii.github.io/categories/Java%E5%90%8E%E5%8F%B0/"/>
+    
+      <category term="Spring" scheme="https://uweii.github.io/categories/Java%E5%90%8E%E5%8F%B0/Spring/"/>
+    
+    
+      <category term="spring注解" scheme="https://uweii.github.io/tags/spring%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="springboot" scheme="https://uweii.github.io/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>spring-data-jpa</title>

@@ -4,17 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="goodnight, coding">
-    <meta name="description" content="偶 然我是天空里的一片云，
-偶尔投影在你的波心。
-你不必讶异，更无须欢喜，
-在转瞬间消灭了踪影。
-你我相逢在黑夜的海上，
-你有你的，我有我的，方向；
-你记得也好，最好你忘掉，
-在这交会时互放的光亮！
-
-        document.qu">
+    <meta name="keywords" content="springboot-annotation, coding">
+    <meta name="description" content="Spring常用注解含义
+@Service Springboot会自动扫描到@Service注解的类, 并把这些类纳入Spring容器中管理. 也可以用@Component注解, 只是@Service注解更能表明该类是服务层类.
+@Comp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>goodnight | Uwei&#39;s Blob</title>
+    <title>springboot-annotation | Uwei&#39;s Blob</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -327,13 +320,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://ww1.sinaimg.cn/large/006kFCeSgy1g9l3a7blaoj31hc0xcb2a.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        goodnight
+                        springboot-annotation
                     </div>
                 </div>
             </div>
@@ -451,8 +444,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%99%9A%E5%AE%89/">
-                                <span class="chip bg-color">晚安</span>
+                            <a href="/tags/spring%E6%B3%A8%E8%A7%A3/">
+                                <span class="chip bg-color">spring注解</span>
+                            </a>
+                        
+                            <a href="/tags/springboot/">
+                                <span class="chip bg-color">springboot</span>
                             </a>
                         
                     </div>
@@ -463,8 +460,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%99%9A%E4%B8%8A/" class="post-category">
-                                晚上
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                Java后台
+                            </a>
+                        
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/Spring/" class="post-category">
+                                Spring
                             </a>
                         
                     </div>
@@ -476,7 +477,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2019-12-04
                 </div>
                 
 
@@ -485,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    131
+                    356
                 </div>
                 
 
@@ -508,14 +509,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="偶-然"><a href="#偶-然" class="headerlink" title="偶 然"></a>偶 然</h1><p>我是天空里的一片云，</p>
-<p>偶尔投影在你的波心。</p>
-<p>你不必讶异，更无须欢喜，</p>
-<p>在转瞬间消灭了踪影。</p>
-<p>你我相逢在黑夜的海上，</p>
-<p>你有你的，我有我的，方向；</p>
-<p>你记得也好，最好你忘掉，</p>
-<p>在这交会时互放的光亮！</p>
+                <h1 id="Spring常用注解含义"><a href="#Spring常用注解含义" class="headerlink" title="Spring常用注解含义"></a>Spring常用注解含义</h1><blockquote>
+<p><code>@Service</code> Springboot会自动扫描到@Service注解的类, 并把这些类纳入Spring容器中管理. 也可以用@Component注解, 只是@Service注解更能表明该类是服务层类.</p>
+<p><code>@Component</code> 泛指组件, 当组件不好归类的时候, 我们可以使用这个注解进行标注.</p>
+<p><code>@Repository</code> 持久层组件, 用于标注数据访问的组件, 即DAO层.</p>
+<p><code>@Resource</code> 这个注解属于J2EE, 默认按<strong>名称</strong>进行装配, 名称可以通过<code>name</code>属性进行指定. 如果没有指定<code>name</code>属性, 当注解写在字段上时, 就默认取<strong>字段名</strong>进行查找. 如果注解写在<code>setter</code>方法上, 就默认取 <strong>属性名</strong> 进行装配. 当找不到与名称匹配的 bean 时, 才按照 <strong>类型</strong> 进行装配. 具体代码如下:</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Resource</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"userRepository"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span></code></pre>
+<p><code>@Autowired</code> 这个注解属于 Spring, 默认按 <strong><code>类型</code></strong> 装配. 默认情况下, 要求依赖对象必须存在, 如果要允许<strong>null</strong>值, 那么可以设置它的<u> required </u>属性为 false, 如 <code>@Autowired(required = false)</code> ; 如果想使用 名称 装配, 那么可以结合 <code>@Qualifier</code>注解使用. 具体代码如下:</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Autowired</span>
+<span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"userRepository"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span></code></pre>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -549,7 +554,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">吴伟</a>
+                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">uwei</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -559,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io/2019/11/30/goodnight/">https://uweii.github.io/2019/11/30/goodnight/</a>
+                    <a href="https://uweii.github.io/2019/12/04/springboot-annotation/">https://uweii.github.io/2019/12/04/springboot-annotation/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,7 +577,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://uweii.github.io" target="_blank">吴伟</a>
+                    <a href="https://uweii.github.io" target="_blank">uwei</a>
                     !
                 </span>
             </div>
@@ -597,8 +602,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%99%9A%E5%AE%89/">
-                                    <span class="chip bg-color">晚安</span>
+                                <a href="/tags/spring%E6%B3%A8%E8%A7%A3/">
+                                    <span class="chip bg-color">spring注解</span>
+                                </a>
+                            
+                                <a href="/tags/springboot/">
+                                    <span class="chip bg-color">springboot</span>
                                 </a>
                             
                         </div>
@@ -1027,39 +1036,57 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/30/morning/">
+                <a href="/2019/12/04/springboot-annotation/">
                     <div class="card-image">
                         
-                        <img src="/images/1.jpeg" class="responsive-img" alt="morning">
+                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1g9l3a7blaoj31hc0xcb2a.jpg" class="responsive-img" alt="springboot-annotation">
                         
-                        <span class="card-title">morning</span>
+                        <span class="card-title">springboot-annotation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一大早起来，使用mac制作windwos10启动U盘。
+                            spring常用注解含义
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A9%E6%99%A8/" class="post-category">
-                                    早晨
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                    Java后台
+                                </a>
+                            
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spring%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">spring注解</span>
+                    </a>
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1071,28 +1098,32 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/27/random/">
+                <a href="/2019/12/03/spring-data-jpa/">
                     <div class="card-image">
                         
-                        <img src="https://ftp.bmp.ovh/imgs/2019/11/ef12f6253c3a400d.jpg" class="responsive-img" alt="今日总结">
+                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1g9jtzomadnj31j010o7wj.jpg" class="responsive-img" alt="spring-data-jpa">
                         
-                        <span class="card-title">今日总结</span>
+                        <span class="card-title">spring-data-jpa</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            今天下班回来，和小皮看了一集 <终极挑战>
+                            Spring Data JPA 介绍
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-03
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            uwei
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                    Java后台
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1100,12 +1131,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/">
-                        <span class="chip bg-color">随便写写</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B0%8F%E8%AE%B0/">
-                        <span class="chip bg-color">小记</span>
+                    <a href="/tags/spring-data-jpa/">
+                        <span class="chip bg-color">spring-data-jpa</span>
                     </a>
                     
                 </div>
