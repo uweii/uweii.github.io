@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-04T03:03:29.063Z</updated>
+  <updated>2019-12-04T03:09:44.707Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://uweii.github.io/2019/12/03/spring-data-jpa/"/>
     <id>https://uweii.github.io/2019/12/03/spring-data-jpa/</id>
     <published>2019-12-03T12:41:41.000Z</published>
-    <updated>2019-12-04T03:03:29.063Z</updated>
+    <updated>2019-12-04T03:09:44.707Z</updated>
     
     <summary type="html">
     
@@ -36,14 +36,10 @@
     </summary>
     
     
-      <category term="spring-data-jpa" scheme="https://uweii.github.io/categories/spring-data-jpa/"/>
-    
-      <category term="Java后台" scheme="https://uweii.github.io/categories/spring-data-jpa/Java%E5%90%8E%E5%8F%B0/"/>
+      <category term="Java后台" scheme="https://uweii.github.io/categories/Java%E5%90%8E%E5%8F%B0/"/>
     
     
-      <category term="spring" scheme="https://uweii.github.io/tags/spring/"/>
-    
-      <category term="jpa" scheme="https://uweii.github.io/tags/jpa/"/>
+      <category term="spring-data-jpa" scheme="https://uweii.github.io/tags/spring-data-jpa/"/>
     
   </entry>
   

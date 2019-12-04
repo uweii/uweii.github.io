@@ -13,8 +13,6 @@
       
       <categories>
           
-          <category> spring-data-jpa </category>
-          
           <category> Java后台 </category>
           
       </categories>
@@ -22,9 +20,7 @@
       
         <tags>
             
-            <tag> spring </tag>
-            
-            <tag> jpa </tag>
+            <tag> spring-data-jpa </tag>
             
         </tags>
       
