@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Uwei&#39;s Blob</title>
+  <title>Diary</title>
   
   <subtitle>i write everything here</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-04T15:06:57.636Z</updated>
+  <updated>2019-12-04T17:05:25.002Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring事务</title>
+    <link href="https://uweii.github.io/2019/12/05/spring-transaction/"/>
+    <id>https://uweii.github.io/2019/12/05/spring-transaction/</id>
+    <published>2019-12-04T16:19:51.000Z</published>
+    <updated>2019-12-04T17:05:25.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Spring注解事务行为&quot;&gt;&lt;a href=&quot;#Spring注解事务行为&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="事务" scheme="https://uweii.github.io/categories/%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+      <category term="spring" scheme="https://uweii.github.io/tags/spring/"/>
+    
+      <category term="transaction" scheme="https://uweii.github.io/tags/transaction/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot-annotation</title>

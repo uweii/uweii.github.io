@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="springboot集成druid, coding">
-    <meta name="description" content="SpringBoot集成Druid先添加druid依赖&amp;lt;dependency&gt;
-            &amp;lt;groupId&gt;com.alibaba&amp;lt;/groupId&gt;
-            &amp;lt;artifactId&gt;d">
+    <meta name="keywords" content="spring事务, coding">
+    <meta name="description" content="Spring注解事务行为
+当事务方法被另一个事务方法调用时, 必须指定事务应该如何传播. 例如, 方法可能继续在现有事务中运行, 也可能开启一个新事务, 并在自己的事务中运行. 事务的传播行为可以在 @Transctional的属性中指定,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>springboot集成druid | Diary</title>
+    <title>spring事务 | Diary</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,13 +320,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://ww1.sinaimg.cn/large/006kFCeSgy1g9l6q09jquj30sg0lcjxw.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        springboot集成druid
+                        spring事务
                     </div>
                 </div>
             </div>
@@ -445,12 +444,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springboot-druid/">
-                                <span class="chip bg-color">springboot+druid</span>
+                            <a href="/tags/spring/">
+                                <span class="chip bg-color">spring</span>
                             </a>
                         
-                            <a href="/tags/druid/">
-                                <span class="chip bg-color">druid</span>
+                            <a href="/tags/transaction/">
+                                <span class="chip bg-color">transaction</span>
                             </a>
                         
                     </div>
@@ -461,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
-                                Java后台
+                            <a href="/categories/%E4%BA%8B%E5%8A%A1/" class="post-category">
+                                事务
                             </a>
                         
                     </div>
@@ -474,7 +473,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-01
+                    2019-12-05
                 </div>
                 
 
@@ -483,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    981
+                    960
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 				
@@ -506,195 +505,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SpringBoot集成Druid"><a href="#SpringBoot集成Druid" class="headerlink" title="SpringBoot集成Druid"></a>SpringBoot集成Druid</h1><h2 id="先添加druid依赖"><a href="#先添加druid依赖" class="headerlink" title="先添加druid依赖"></a>先添加druid依赖</h2><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>alibaba<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>druid<span class="token operator">-</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
-<h2 id="application-properties相关配置"><a href="#application-properties相关配置" class="headerlink" title="application.properties相关配置"></a>application.properties相关配置</h2><pre class=" language-java"><code class="language-java">spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>url<span class="token operator">=</span>jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>common<span class="token operator">?</span>characterEncoding<span class="token operator">=</span>utf8
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>username<span class="token operator">=</span>root
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>password<span class="token operator">=</span>root
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">=</span>com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver
-
-###  数据源类别
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>type<span class="token operator">=</span>com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token punctuation">.</span>DruidDataSource
-###  初始化大小<span class="token punctuation">,</span> 最小<span class="token punctuation">,</span> 最大
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>initial<span class="token operator">-</span>size<span class="token operator">=</span><span class="token number">5</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>min<span class="token operator">-</span>idle<span class="token operator">=</span><span class="token number">5</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>max<span class="token operator">-</span>active<span class="token operator">=</span><span class="token number">20</span>
-
-### 配置获取连接等待超时时间<span class="token punctuation">,</span> 单位是毫秒
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>max<span class="token operator">-</span>wait<span class="token operator">=</span><span class="token number">60000</span>
-### 配置间隔多久才进行一次检测<span class="token punctuation">,</span> 检测需要关闭的空闲连接<span class="token punctuation">,</span> 单位是毫秒
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>time<span class="token operator">-</span>between<span class="token operator">-</span>eviction<span class="token operator">-</span>runs<span class="token operator">-</span>millis<span class="token operator">=</span><span class="token number">60000</span>
-### 配置一个连接在池中最小生存时间<span class="token punctuation">,</span> 单位是毫秒
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>min<span class="token operator">-</span>evictable<span class="token operator">-</span>idle<span class="token operator">-</span>time<span class="token operator">-</span>millis<span class="token operator">=</span><span class="token number">300000</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>validation<span class="token operator">-</span>query<span class="token operator">=</span>select <span class="token number">1</span> from dual
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>test<span class="token operator">-</span><span class="token keyword">while</span><span class="token operator">-</span>idle<span class="token operator">=</span><span class="token boolean">true</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>test<span class="token operator">-</span>on<span class="token operator">-</span>borrow<span class="token operator">=</span><span class="token boolean">false</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>test<span class="token operator">-</span>on<span class="token operator">-</span><span class="token keyword">return</span><span class="token operator">=</span><span class="token boolean">false</span>
-###  打开PSCache<span class="token punctuation">,</span> 并指定每个连接上PSCache的大小
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token operator">-</span>prepared<span class="token operator">-</span>statements<span class="token operator">=</span><span class="token boolean">true</span>
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>max<span class="token operator">-</span>pool<span class="token operator">-</span>prepared<span class="token operator">-</span>statement<span class="token operator">-</span>per<span class="token operator">-</span>connection<span class="token operator">-</span>size<span class="token operator">=</span><span class="token number">20</span>
-###  配置监控统计拦截的filters<span class="token punctuation">,</span> 去掉后监控界面的SQL无法统计<span class="token punctuation">,</span> <span class="token string">'wall'</span>用于防火墙
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>filters<span class="token operator">=</span>stat<span class="token punctuation">,</span>wall
-### 通过connectProperties属性来打开mergeSql功能<span class="token punctuation">,</span> 慢SQL记录
-spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>connection<span class="token operator">-</span>properties<span class="token operator">=</span>druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>mergeSql<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>slowSqlMillis<span class="token operator">=</span><span class="token number">5000</span>
-### 合并多个DruidDataSource的监控数据
-#spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>use<span class="token operator">-</span>global<span class="token operator">-</span>data<span class="token operator">-</span>source<span class="token operator">-</span>stat<span class="token operator">=</span><span class="token boolean">true</span></code></pre>
-<h2 id="注册servlet和filter"><a href="#注册servlet和filter" class="headerlink" title="注册servlet和filter"></a>注册servlet和filter</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Config</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">druidStatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//提供类的进行注册</span>
-        ServletRegistrationBean servletRegistrationBean
-                <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//添加初始化参数, initParams</span>
-        <span class="token comment" spellcheck="true">//白名单,允许</span>
-        servletRegistrationBean<span class="token punctuation">.</span><span class="token function">addInitParameter</span><span class="token punctuation">(</span><span class="token string">"allow"</span><span class="token punctuation">,</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//开启后,127.0.0.1访问时会被拒绝</span>
-<span class="token comment" spellcheck="true">//        servletRegistrationBean.addInitParameter("deny", "127.0.0.1");</span>
-        <span class="token comment" spellcheck="true">//IP黑名单 (存在共同时, deny优先于allow)</span>
-        <span class="token comment" spellcheck="true">//如果满足deny, 就提示</span>
-        <span class="token comment" spellcheck="true">//登录查看信息的账号和密码</span>
-        servletRegistrationBean<span class="token punctuation">.</span><span class="token function">addInitParameter</span><span class="token punctuation">(</span><span class="token string">"loginUsername"</span><span class="token punctuation">,</span> <span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        servletRegistrationBean<span class="token punctuation">.</span><span class="token function">addInitParameter</span><span class="token punctuation">(</span><span class="token string">"loginPassword"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//是否能够重置数据</span>
-        servletRegistrationBean<span class="token punctuation">.</span><span class="token function">addInitParameter</span><span class="token punctuation">(</span><span class="token string">"resetEnable"</span><span class="token punctuation">,</span> <span class="token string">"false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> servletRegistrationBean<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> FilterRegistrationBean <span class="token function">druidStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        FilterRegistrationBean filterRegistrationBean
-                <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//添加过滤规则</span>
-        filterRegistrationBean<span class="token punctuation">.</span><span class="token function">addUrlPatterns</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//添加需要忽略的格式信息</span>
-        filterRegistrationBean<span class="token punctuation">.</span><span class="token function">addInitParameter</span><span class="token punctuation">(</span><span class="token string">"exclusions"</span><span class="token punctuation">,</span>
-                <span class="token string">"*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> filterRegistrationBean<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<blockquote>
-<p>我们设置了允许127.0.0.1的ip来访问我们的servlet</p>
-<p>并且设置了可以使用 <strong>admin</strong> 和 <strong>123456</strong> 作为账号密码来访问druid的web管理界面</p>
+                <h1 id="Spring注解事务行为"><a href="#Spring注解事务行为" class="headerlink" title="Spring注解事务行为"></a>Spring注解事务行为</h1><blockquote>
+<p>当事务方法被另一个事务方法调用时, 必须指定事务应该如何传播. 例如, 方法可能继续在现有事务中运行, 也可能开启一个新事务, 并在自己的事务中运行. 事务的传播行为可以在 <code>@Transctional</code>的属性中指定, spring定义了 7 种传播行为, 具体如下图所示.</p>
 </blockquote>
-<h2 id="启动应用"><a href="#启动应用" class="headerlink" title="启动应用"></a>启动应用</h2><h3 id="在浏览器输入"><a href="#在浏览器输入" class="headerlink" title="在浏览器输入"></a>在浏览器输入</h3><p><code>http://127.0.0.1:8080/druid/index.html</code>便可访问druid管理界面</p>
-<p><img src="https://i.loli.net/2019/12/01/FlSPaUEYdWBm5Lp.png" alt="image.png"></p>
-<h3 id="如果设置以下参数"><a href="#如果设置以下参数" class="headerlink" title="如果设置以下参数"></a>如果设置以下参数</h3><p><code>servletRegistrationBean.addInitParameter("deny", "127.0.0.1");</code> 那么访问如下:</p>
-<p><img src="https://i.loli.net/2019/12/01/dNqbrGIm3LcZeyu.png" alt="image.png"></p>
-<h2 id="现在我们创建5个线程来连接数据库"><a href="#现在我们创建5个线程来连接数据库" class="headerlink" title="现在我们创建5个线程来连接数据库"></a>现在我们创建5个线程来连接数据库</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BackJob</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Resource</span>
-    JdbcTemplate jdbcTemplate<span class="token punctuation">;</span>
+<h2 id="Spring传播行为"><a href="#Spring传播行为" class="headerlink" title="Spring传播行为"></a>Spring传播行为</h2><center>表1 Spring事务播行为</center>
 
-    ExecutorService executorService <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>fixedDelay <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            executorService<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token annotation punctuation">@Override</span>
-                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token function">execQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        String sql <span class="token operator">=</span> <span class="token string">"select * from user"</span><span class="token punctuation">;</span>
-        List<span class="token operator">&lt;</span>User<span class="token operator">></span> userList <span class="token operator">=</span> jdbcTemplate<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">RowMapper</span><span class="token operator">&lt;</span>User<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> User <span class="token function">mapRow</span><span class="token punctuation">(</span>ResultSet resultSet<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
-                User user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                user<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">findColumn</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                user<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">findColumn</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                user<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">findColumn</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                user<span class="token punctuation">.</span><span class="token function">setEmail</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">findColumn</span><span class="token punctuation">(</span><span class="token string">"email"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> user<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>userList<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3 id="上面的User类"><a href="#上面的User类" class="headerlink" title="上面的User类"></a>上面的User类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> String <span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> email<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEmail</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"User{"</span> <span class="token operator">+</span>
-                <span class="token string">"id="</span> <span class="token operator">+</span> id <span class="token operator">+</span>
-                <span class="token string">", name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
-                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
-                <span class="token string">", email='"</span> <span class="token operator">+</span> email <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
-                <span class="token string">'}'</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="我的数据库信息"><a href="#我的数据库信息" class="headerlink" title="我的数据库信息"></a>我的数据库信息</h3><blockquote>
-<p>注意,使用 <code>@Scheduled(fixedDelay = 1000)</code> 表示每隔1秒执行一次, 要使用这个注解, 还需要在Application类上, 加上 <strong>@EnableScheduling</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@EnableScheduling</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MysqlApplication</span> <span class="token punctuation">{</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>MysqlApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-</blockquote>
-<hr>
-<p>也就是说, 现在每秒有5个线程进行连接数据库查询, 然后我们去web控制台查看一下:</p>
-<p><img src="https://i.loli.net/2019/12/01/fFbZIDmrGqlOy2S.png" alt="image.png"></p>
-<hr>
-<p><strong>Over</strong> </p>
-<p>如果觉得需要更多技术干货, 来我的CSDN 和 GitHub哦</p>
+<table>
+<thead>
+<tr>
+<th align="center">传播行为</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PROPAGATION_REQUIRED</td>
+<td align="center">如果当前没有事务, 就新建一个事务; <br>如果已经存在一个事务, 就加入这个事务中</td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_SUPPORTS</td>
+<td align="center">支持当前事务, 如果当前没有事务, 就以 <code>非事务方式执行</code></td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_MANDATORY</td>
+<td align="center">使用当前的事务, 如果当前没有事务, 就 <code>抛出异常</code></td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_REQUIRES_NEW</td>
+<td align="center">新建事务, 如果当前存在事务, 就 <code>把当前事务挂起</code></td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_NOT_SUPPORTED</td>
+<td align="center">以非事务方式执行操作, 如果当前存在事务, 就<code>把当前事务挂起</code></td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_NEVER</td>
+<td align="center">以非事务方式执行, 如果当前存在事务, <code>就抛出异常</code></td>
+</tr>
+<tr>
+<td align="center">PROPAGATION_NESTED</td>
+<td align="center">如果当前存在事务, 就在嵌套事务内执行; <br>如果当前没有事务, 就执行与PROPAGATION_REQUIRED类似的操作</td>
+</tr>
+</tbody></table>
+<p>##并发事务所导致的问题</p>
+<p>​    隔离级别定义了一个事务可能接受其他并发事务影响的程度. 在典型的应用程序中, 多个事务并发运行经常会操作相同的数据来完成各自的任务. 并发虽然是必须的, 可是会导致许多问题, 并发事务所导致的问题可以分为以下三类:</p>
 <blockquote>
-<p>CSDN:  <a href="https://blog.csdn.net/dummyo" target="_blank" rel="noopener">https://blog.csdn.net/dummyo</a></p>
-<p>Github: <a href="https://github.com/uweii" target="_blank" rel="noopener">https://github.com/uweii</a></p>
+<ol>
+<li>脏读(Dirty Read): 脏读发生在一个事务读取了另一个事务改写但尚未提交的数据. 如果改写在稍后被回滚了, name第一个事务获取的数据就是无效的.</li>
+<li>不可重复读(Nonrepeatable Read): 不可重复读发生在一个事务执行相同的查询两次或两次以上, 但是每次都得到不同的数据时. 通常是因为另一个并发事务在两次查询期间更新了数据</li>
+<li>幻读(Phantom Read): 幻读与不可重复读类似, 发生在一个事务(T1)读取了几行数据, 接着另一个并发事务(T2)插入了一些数据时. 在随后的查询中, 第一个事务(T1)就会发现多了一些原本不存在的记录.</li>
+</ol>
+</blockquote>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><center>表2 Spring事务隔离级别</center>
+
+<table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ISOLATION_DEFAULT</td>
+<td align="center">使用数据库默认的事务隔离级别, 另外4个与JDBC的隔离级别相对应</td>
+</tr>
+<tr>
+<td align="center">ISOLATION_READ_UNCOMMITTED</td>
+<td align="center">事务最低的隔离级别, 允许另一个事务可以看到这个事务未提交的数据. 这种隔离级别会产生<code>脏读</code>, <code>不可重复度</code>和<code>幻读</code></td>
+</tr>
+<tr>
+<td align="center">ISOLATION_READ_COMMITTED</td>
+<td align="center">使用当前的事务, 如果当前没有事务, 就抛出异常</td>
+</tr>
+<tr>
+<td align="center">ISOLATION_REPEATABLE_READ</td>
+<td align="center">新建事务, 如果当前存在事务, 就把当前事务挂起</td>
+</tr>
+<tr>
+<td align="center">ISOLATION_SERIALIZABLE</td>
+<td align="center">以非事务方式执行操作, 如果当前存在事务, 就把当前事务挂起</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>@Transactional</code>可以通过propagation属性定义事务行为, 属性值分别为REQUIRED, SUPPORTS, MANDATORY, REQUIRES_NEW, NOT_SUPPORTED, NEVER 以及NESTED, 分别对应表1中的内容. 可以通过<code>isolation</code>属性定义隔离级别, 属性值分别为 DEFAULT, READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, 以及 SERILIZABLE.</p>
+<p>还可以通过 timeout 属性设置事务过期时间, 通过 readOnly 指定当前事务是否是 <code>只读事务</code> , 通过 RollbackFor(noRollbackFor) 指定哪个或者哪些异常可以引起 (或不可以引起) 事务 回滚.</p>
 </blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -739,7 +632,7 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io/2019/12/01/springboot-druid/">https://uweii.github.io/2019/12/01/springboot-druid/</a>
+                    <a href="https://uweii.github.io/2019/12/05/spring-transaction/">https://uweii.github.io/2019/12/05/spring-transaction/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -777,12 +670,12 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/springboot-druid/">
-                                    <span class="chip bg-color">springboot+druid</span>
+                                <a href="/tags/spring/">
+                                    <span class="chip bg-color">spring</span>
                                 </a>
                             
-                                <a href="/tags/druid/">
-                                    <span class="chip bg-color">druid</span>
+                                <a href="/tags/transaction/">
+                                    <span class="chip bg-color">transaction</span>
                                 </a>
                             
                         </div>
@@ -1211,45 +1104,51 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/03/spring-data-jpa/">
+                <a href="/2019/12/05/spring-transaction/">
                     <div class="card-image">
                         
-                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1g9jtzomadnj31j010o7wj.jpg" class="responsive-img" alt="spring-data-jpa">
+                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1g9l6q09jquj30sg0lcjxw.jpg" class="responsive-img" alt="spring事务">
                         
-                        <span class="card-title">spring-data-jpa</span>
+                        <span class="card-title">spring事务</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spring Data JPA 介绍
+                            Spring注解事务行为
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
-                                    Java后台
+                            <a href="/categories/%E4%BA%8B%E5%8A%A1/" class="post-category">
+                                    事务
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring-data-jpa/">
-                        <span class="chip bg-color">spring-data-jpa</span>
+                    <a href="/tags/spring/">
+                        <span class="chip bg-color">spring</span>
+                    </a>
+                    
+                    <a href="/tags/transaction/">
+                        <span class="chip bg-color">transaction</span>
                     </a>
                     
                 </div>
@@ -1263,23 +1162,23 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/30/spring-mybatis-pagehelper/">
+                <a href="/2019/12/04/springboot-annotation/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/11/30/p7WuV9Q6OBrJNHK.png" class="responsive-img" alt="spring_mybatis_pagehelper">
+                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1g9l3a7blaoj31hc0xcb2a.jpg" class="responsive-img" alt="springboot-annotation">
                         
-                        <span class="card-title">spring_mybatis_pagehelper</span>
+                        <span class="card-title">springboot-annotation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            springboot集成tkbatis,并借助PageHelper进行分页
+                            spring常用注解含义
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-04
                             </span>
                         <span class="publish-author">
                             
@@ -1289,6 +1188,10 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
                                     Java后台
                                 </a>
                             
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1296,16 +1199,12 @@ spring<span class="token punctuation">.</span>datasource<span class="token punct
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring/">
-                        <span class="chip bg-color">spring</span>
+                    <a href="/tags/spring%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">spring注解</span>
                     </a>
                     
-                    <a href="/tags/tkbatis/">
-                        <span class="chip bg-color">tkbatis</span>
-                    </a>
-                    
-                    <a href="/tags/pagehelper/">
-                        <span class="chip bg-color">pagehelper</span>
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
                     </a>
                     
                 </div>
