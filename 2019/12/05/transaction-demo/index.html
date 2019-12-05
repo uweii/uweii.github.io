@@ -540,7 +540,7 @@
         <span class="token keyword">return</span> count<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>我在 <code>save()</code>方法添加事务, 同时在save完成之后抛出<code>NullPointException</code>异常, 查看数据是否可以回转.</p>
+<p>我在 <code>save()</code>方法添加事务, 同时在save完成之后抛出<code>NullPointException</code>异常, 查看数据是否可以回滚.</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootTest</span>
 <span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">class</span> <span class="token class-name">MybatisplusApplicationTests</span> <span class="token punctuation">{</span>
