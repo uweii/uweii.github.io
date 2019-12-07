@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-05T13:19:49.959Z</updated>
+  <updated>2019-12-05T14:37:26.326Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,36 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>testi</title>
-    <link href="https://uweii.github.io/2019/12/05/testi/"/>
-    <id>https://uweii.github.io/2019/12/05/testi/</id>
-    <published>2019-12-05T13:19:49.000Z</published>
-    <updated>2019-12-05T13:19:49.959Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Over&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;如果觉得需要更多技术干货, 来我的CSDN 和 GitHub哦&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;CSDN:  &lt;a href=&quot;https://blog.csdn.net/dummyo&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="tag1" scheme="https://uweii.github.io/tags/tag1/"/>
-    
-      <category term="tag2" scheme="https://uweii.github.io/tags/tag2/"/>
-    
-  </entry>
   
   <entry>
     <title>Springboot使用事务</title>
