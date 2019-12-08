@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="morning, coding">
-    <meta name="description" content="一大早起来，使用mac制作windwos10启动U盘。
-
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            i">
+    <meta name="keywords" content="Retry重试机制, coding">
+    <meta name="description" content="Retry重试机制
+当我们调用一个接口时, 可能由于网络等原因造成第一次失败, 再去尝试就成功了, 这就是重试机制. 
+重试的解决方案有很多, 比如利用 try-catch-redo简单重试模式, 通过判断返回结果或监听异常来
+判断是否重试">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>morning | Diary</title>
+    <title>Retry重试机制 | Diary</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -323,13 +322,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/1.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://ww1.sinaimg.cn/large/006ewUczgy1g9pry01yryj30jg0dqawt.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        morning
+                        Retry重试机制
                     </div>
                 </div>
             </div>
@@ -445,9 +444,17 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Retry/">
+                                <span class="chip bg-color">Retry</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6/">
+                                <span class="chip bg-color">重试机制</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -455,8 +462,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%97%A9%E6%99%A8/" class="post-category">
-                                早晨
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                Java后台
                             </a>
                         
                     </div>
@@ -468,7 +475,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2019-12-08
                 </div>
                 
 
@@ -477,14 +484,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    65
+                    660
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -500,7 +507,109 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一大早起来，使用mac制作windwos10启动U盘。</p>
+                <h1 id="Retry重试机制"><a href="#Retry重试机制" class="headerlink" title="Retry重试机制"></a><center>Retry重试机制</center></h1><blockquote>
+<p>当我们调用一个接口时, 可能由于网络等原因造成第一次失败, 再去尝试就成功了, 这就是重试机制. </p>
+<p>重试的解决方案有很多, 比如利用 try-catch-redo简单重试模式, 通过判断返回结果或监听异常来</p>
+<p>判断是否重试, 具体可以看如下例子:</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testRetry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> result <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span><span class="token punctuation">{</span>
+            result <span class="token operator">=</span> <span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//一次重试</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//一次重试</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>但是这种策略有个问题就是: 正常逻辑和重试逻辑强耦合. 基于这个问题, 我们可以使用 Spring-Retry工具, </p>
+<p>该工具把重试操作模板定制化, 可以设置重试策略和回退策略. 同时 重试执行实例保证线程安全.</p>
+</blockquote>
+<h1 id="Retry重试机制的使用"><a href="#Retry重试机制的使用" class="headerlink" title="Retry重试机制的使用"></a>Retry重试机制的使用</h1><blockquote>
+<p>首先在pom.xml中引入所需的依赖:</p>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>retry<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>retry<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>aspectj<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>aspectjweaver<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
+<p>添加完依赖后, 需要在入口类Application中添加注解<code>@EnableRetry</code>开启retry重试:</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableRetry</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>DemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p>然后我们新建个接口RetryService:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @Author wuwei
+ * @Date 2019/12/8 8:22 下午
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RetryService</span> <span class="token punctuation">{</span>
+    AyMood <span class="token function">findByIdRetry</span><span class="token punctuation">(</span>String id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>接着创建实现类RetryServiceImpl:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @Author wuwei
+ * @Date 2019/12/8 8:22 下午
+ */</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RetryServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">AyMoodService</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token annotation punctuation">@Retryable</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>BusinessException<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">,</span> maxAttempts <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    backoff <span class="token operator">=</span> <span class="token annotation punctuation">@Backoff</span><span class="token punctuation">(</span>delay <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">,</span> multiplier <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> AyMood <span class="token function">findByIdRetry</span><span class="token punctuation">(</span>String id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"[findByIdRetry]方法重试失败了!!!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BusinessException</span><span class="token punctuation">(</span><span class="token string">"retry"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>我们在方法中故意抛出<code>自定义异常BusinessException</code>, </p>
+<p><strong>关于自定义处理全局异常,请移步</strong>: <a href="https://blog.csdn.net/dummyo/article/details/103450968" target="_blank" rel="noopener">https://blog.csdn.net/dummyo/article/details/103450968</a></p>
+<p><code>@Retryable</code>: </p>
+<ul>
+<li>value属性表示当出现哪些异常的时候触发重试</li>
+<li>maxAttemps: 表示最大重试次数, 默认为3</li>
+<li>delay表示重试的延迟时间</li>
+<li>multiplier表示<span style="color:red">第n次重试是n-1次重试的多少倍</span>.[例子中: 失败后第一次过5秒后重试, 第二次过10秒, 20秒]</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>我们写个测试方法来调用上述方法:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @Author wuwei
+ * @Date 2019/12/8 10:24 下午
+ */</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/start"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    AyMoodService ayMoodService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/retry"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">findByIdRetry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        AyMood ayMood <span class="token operator">=</span> ayMoodService<span class="token punctuation">.</span><span class="token function">findByIdRetry</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后在浏览器中请求这个接口, 会发现控制台一直在进行重试, 5次后就返回结果.</p>
+</blockquote>
+<p><strong>Over</strong> </p>
+<p>如果觉得需要更多技术干货, 来我的CSDN 和 GitHub哦</p>
+<blockquote>
+<p>CSDN:  <a href="https://blog.csdn.net/dummyo" target="_blank" rel="noopener">https://blog.csdn.net/dummyo</a></p>
+<p>Github: <a href="https://github.com/uweii" target="_blank" rel="noopener">https://github.com/uweii</a></p>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -534,7 +643,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">吴伟</a>
+                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">uwei</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -544,7 +653,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io/2019/11/30/morning/">https://uweii.github.io/2019/11/30/morning/</a>
+                    <a href="https://uweii.github.io/2019/12/08/retry/">https://uweii.github.io/2019/12/08/retry/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,7 +666,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://uweii.github.io" target="_blank">吴伟</a>
+                    <a href="https://uweii.github.io" target="_blank">uwei</a>
                     !
                 </span>
             </div>
@@ -581,7 +690,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Retry/">
+                                    <span class="chip bg-color">Retry</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6/">
+                                    <span class="chip bg-color">重试机制</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1008,50 +1125,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/30/ifiloveu/">
+                <a href="/2019/12/08/retry/">
                     <div class="card-image">
                         
+                        <img src="http://ww1.sinaimg.cn/large/006ewUczgy1g9pry01yryj30jg0dqawt.jpg" class="responsive-img" alt="Retry重试机制">
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="致橡树">
-                        
-                        <span class="card-title">致橡树</span>
+                        <span class="card-title">Retry重试机制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我如果爱你, 绝不像攀援的凌霄花, 借你的高枝炫耀自己.
+                            当我们调用一个接口时, 可能由于网络等原因造成第一次失败, 再去尝试就成功了, 这就是重试机制.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%97%E6%96%87/" class="post-category">
-                                    诗文
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                    Java后台
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BE%8E%E6%96%87/">
-                        <span class="chip bg-color">美文</span>
+                    <a href="/tags/Retry/">
+                        <span class="chip bg-color">Retry</span>
                     </a>
                     
-                    <a href="/tags/%E8%87%B4%E6%A9%A1%E6%A0%91/">
-                        <span class="chip bg-color">致橡树</span>
+                    <a href="/tags/%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6/">
+                        <span class="chip bg-color">重试机制</span>
                     </a>
                     
                 </div>
@@ -1065,40 +1183,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/30/goodnight/">
+                <a href="/2019/12/08/exception/">
                     <div class="card-image">
                         
+                        <img src="http://ww1.sinaimg.cn/large/006ewUczgy1g9pqikyk34j30a806t793.jpg" class="responsive-img" alt="springboot全局异常">
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="goodnight">
-                        
-                        <span class="card-title">goodnight</span>
+                        <span class="card-title">springboot全局异常</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            偶 然我是天空里的一片云，
-偶尔投影在你的波心。
-你不必讶异，更无须欢喜，
-在转瞬间消灭了踪影。
-你我相逢在黑夜的海上，
-你有你的，我有我的，方向；
-你记得也好，最好你忘掉，
-在这交会时互放的光亮！
-
-        document.qu
+                            Springboot全局异常处理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%99%9A%E4%B8%8A/" class="post-category">
-                                    晚上
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                    Java后台
                                 </a>
                             
                             
@@ -1108,8 +1216,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%99%9A%E5%AE%89/">
-                        <span class="chip bg-color">晚安</span>
+                    <a href="/tags/%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+                        <span class="chip bg-color">全局异常处理</span>
+                    </a>
+                    
+                    <a href="/tags/Springboot/">
+                        <span class="chip bg-color">Springboot</span>
                     </a>
                     
                 </div>
