@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-05T14:37:26.326Z</updated>
+  <updated>2019-12-08T15:36:26.527Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot全局异常</title>
+    <link href="https://uweii.github.io/2019/12/08/exception/"/>
+    <id>https://uweii.github.io/2019/12/08/exception/</id>
+    <published>2019-12-08T14:56:44.000Z</published>
+    <updated>2019-12-08T15:36:26.527Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;SpringBoot全局异常使用&quot;&gt;&lt;a href=&quot;#SpringBoot全局异常使用&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot全局异常使用&quot;&gt;&lt;/a&gt;SpringBoot全局异常使用&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java后台" scheme="https://uweii.github.io/categories/Java%E5%90%8E%E5%8F%B0/"/>
+    
+    
+      <category term="全局异常处理" scheme="https://uweii.github.io/tags/%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Springboot" scheme="https://uweii.github.io/tags/Springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>Springboot使用事务</title>
