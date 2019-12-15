@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://uweii.github.io/"/>
-  <updated>2019-12-08T16:25:36.106Z</updated>
+  <updated>2019-12-15T11:38:44.400Z</updated>
   <id>https://uweii.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring-session</title>
+    <link href="https://uweii.github.io/2019/12/15/spring-session/"/>
+    <id>https://uweii.github.io/2019/12/15/spring-session/</id>
+    <published>2019-12-15T05:47:31.000Z</published>
+    <updated>2019-12-15T11:38:44.400Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#Springboot实现登录过期,重定向到登录页面&lt;/p&gt;
+&lt;h2 id=&quot;集成spring-session&quot;&gt;&lt;a href=&quot;#集成spring-session&quot; class=&quot;headerlink&quot; title=&quot;集成spring
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java后台" scheme="https://uweii.github.io/categories/Java%E5%90%8E%E5%8F%B0/"/>
+    
+    
+      <category term="springboot登录过期" scheme="https://uweii.github.io/tags/springboot%E7%99%BB%E5%BD%95%E8%BF%87%E6%9C%9F/"/>
+    
+      <category term="springboot session" scheme="https://uweii.github.io/tags/springboot-session/"/>
+    
+  </entry>
   
   <entry>
     <title>Retry重试机制</title>
