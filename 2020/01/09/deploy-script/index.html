@@ -4,12 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="morning, coding">
-    <meta name="description" content="一大早起来，使用mac制作windwos10启动U盘。
+    <meta name="keywords" content="Linux下一键部署应用程序脚本, coding">
+    <meta name="description" content="#必须学会的Linux下一键部署项目的shell脚本
 
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            i">
+在公司也经历了几次项目更新，往服务器上部署上线。然鹅每次都是用的服务器上已经存在的脚本文件，类似这个样子：
+
+每次我就上传个jar包，然后执行./restart就结束所谓的发包，太无聊">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>morning | Diary</title>
+    <title>Linux下一键部署应用程序脚本 | Diary</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -323,13 +323,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/1.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://ww1.sinaimg.cn/large/006kFCeSgy1gaqnypsoguj30l20amwwr.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        morning
+                        Linux下一键部署应用程序脚本
                     </div>
                 </div>
             </div>
@@ -445,9 +445,17 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/Shell-Script/">
+                                <span class="chip bg-color">Shell Script</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -455,8 +463,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%97%A9%E6%99%A8/" class="post-category">
-                                早晨
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -468,7 +476,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2020-01-09
                 </div>
                 
 
@@ -477,14 +485,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    65
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 				
@@ -500,7 +508,227 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一大早起来，使用mac制作windwos10启动U盘。</p>
+                <p>#必须学会的Linux下一键部署项目的shell脚本</p>
+<blockquote>
+<p>在公司也经历了几次项目更新，往服务器上部署上线。然鹅每次都是用的服务器上已经存在的脚本文件，类似这个样子：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006kFCeSgy1gaqlu8maajj30u407u44c.jpg" alt=""></p>
+<p>每次我就上传个jar包，然后执行<code>./restart</code>就结束所谓的<strong>发包</strong>，太无聊了， 于是想着为什么要用别人的脚本文件呢？ 于是有了本篇博客。</p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li>需要用到linux基本命令<ul>
+<li>怎么执行shell脚本</li>
+<li>使用nohup启动jar包</li>
+<li>dirname命令</li>
+<li>readlink命令</li>
+<li>基本shell语法，如方法，返回值，if 判断</li>
+</ul>
+</li>
+</ul>
+<h2 id="开始编写脚本"><a href="#开始编写脚本" class="headerlink" title="开始编写脚本"></a>开始编写脚本</h2><h3 id="application-sh-程序控制相关脚本"><a href="#application-sh-程序控制相关脚本" class="headerlink" title="application.sh 程序控制相关脚本"></a>application.sh 程序控制相关脚本</h3><blockquote>
+<p>application.sh作为基本模块，里面包含了控制程序的<strong>启动</strong>，<strong>暂停</strong>，<strong>获取程序状态</strong>，<strong>以及程序运行的进程id</strong>， application.sh将被导入其它的脚本中，使得其它脚本可以执行<strong>application.sh</strong>里的方法。</p>
+<p><code>readlink -f $0</code>是取得脚本的相关描述信息，<code>$0</code>表示正在执行脚本名称。在这里<code>$0</code>的值就是<code>application.sh</code>, <code>app_name</code>表示应用名称，部署不同的jar包时，只需更改<code>app_name</code>的值即可。</p>
+<p>我写了注释，应该能看明白。</p>
+<p><u>注意：application.sh里面没有入口函数，只是提供方法供其它模块使用。</u></p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
+#name: application.sh
+#desc: 应用相关信息
+#dete: 2020/1/9
+#author: uwei
+
+#当前脚本所在文件夹路径
+current_path=dirname $(readlink -f $0)
+
+#应用名称
+app_name="demo.jar"
+
+#应用位置
+app_path=$current_path/project/$app_name
+
+#应用运行的pid
+pid=''
+
+#判断jar包是否在运行
+#jar如果在运行返回1，否则返回0
+function is_running(){
+    pid=`ps aux|grep ${app_name}|grep -v grep|awk '{print $2}'` #获取jar包运行的pid
+    if [ -z $pid ] ;then  #如果pid的长度为空，说明没有在运行
+            return 0
+    else
+            return 1
+    fi
+}
+
+#启动jar包,启动成功返回1，否则返回0
+function start(){
+    #先判断jar有没有在运行
+    is_running
+    if [ $? -eq "0" ]; then #没有运行，就使用nohup命令启动
+        nohup java -jar $app_path > /dev/null 2>&1 &
+        return 1
+    else
+        return 0
+    fi
+}
+
+#停止jar包，停止成功返回1，否则返回0
+function stop(){
+    #先判断jar是否在运行
+    is_running
+    if [ $? -eq '0' ]; then
+        return 0  #jar没有运行，停止失败
+    else
+        kill -9 $pid  #jar在运行，使用kill命令停止
+        return 1
+    fi
+}</code></pre>
+<h3 id="start-sh-启动脚本"><a href="#start-sh-启动脚本" class="headerlink" title="start.sh 启动脚本"></a>start.sh 启动脚本</h3><blockquote>
+<p>这里需要注意一下<code>start.sh</code>就是导入<code>application.sh</code>, 因此可以直接调用<code>application.sh</code>里面的方法， 也可以访问里面的变量。</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
+#name: start.sh
+#desc: 启动jar包
+#date：2020/1/9
+#author：uwei
+
+#当前脚本所在目录的路径
+current_path=dirname $(readlink -f $0)
+
+#导入application.sh
+. $current_path/application.sh
+
+
+#启动程序
+function start_app(){
+    start
+    is_running               #更新pid
+    if [ $? -eq '1' ]; then  #如果启动成功
+        echo "${app_name} is started at pid: ${pid}"
+    else                     #启动失败
+        if [ -z $pid ]；then         #如果pid为空，说明启动失败
+            echo "${app_name} started failed"
+        else
+            echo "${app_name} is already running at pid: ${pid}"  #程序已经在运行
+        fi
+    fi
+}
+
+##############脚本程序入口############
+start_app</code></pre>
+<h3 id="stop-sh-停止脚本"><a href="#stop-sh-停止脚本" class="headerlink" title="stop.sh 停止脚本"></a>stop.sh 停止脚本</h3><pre class=" language-shell"><code class="language-shell">#!/bin/bash
+#name: stop.sh
+#desc: 程序暂停脚本
+#date: 2020/1/9
+#author: uwei
+
+#当前脚本所在目录的路径
+current_path=dirname $(readlink -f $0)
+
+#导入application.sh
+. $current_path/application.sh
+
+
+#暂定方法
+function stop_app(){
+    stop
+    if [ $? -eq '0' ]; then                                    #如果暂停失败
+        echo "${app_name} is NOT running"     #程序没有在运行
+    else
+        echo "${app_name} has benn stopped"。 #成功停止
+    fi
+}
+
+
+#############程序入口###############
+stop_app</code></pre>
+<h3 id="restart-sh-重启脚本"><a href="#restart-sh-重启脚本" class="headerlink" title="restart.sh 重启脚本"></a>restart.sh 重启脚本</h3><pre class=" language-shell"><code class="language-shell">#!/bin/bash
+#name: restart.sh
+#desc: 重启脚本
+#date: 2020/1/9
+#author: uwei
+
+#当前脚本所在目录的路径
+current_path=dirname $(readlink -f $0)
+
+#导入application.sh
+. $current_path/application.sh
+
+
+#重启方法
+function restart(){
+    is_running           #先获取pid
+    if [ $? -eq ''0 ]    #返回0，表示没有运行，那么我就直接启动
+        echo "${app_name} is not running, and now it will be started"
+        start              #调用启动方法
+        is_running           #更新pid
+        echo "${app_name} is running at pid: ${pid}"   #提示启动成功
+    else
+        stop               #程序在运行，先stop，再start
+        start
+        is_running                  #更新pid
+        echo "${app_name} has benn restarted running at pid: ${pid}"
+    fi
+}
+
+
+####################程序入口##################
+restart</code></pre>
+<h3 id="status-sh-获取状态脚本"><a href="#status-sh-获取状态脚本" class="headerlink" title="status.sh 获取状态脚本"></a>status.sh 获取状态脚本</h3><pre class=" language-shell"><code class="language-shell">#!/bin/bash
+#name: status.sh
+#desc: 获取程序运行状态
+#date: 2020/1/9
+#author: uwei
+
+#当前脚本所在目录的路径
+current_path=dirname $(readlink -f $0)
+
+#导入application.sh
+. $current_path/application.sh
+
+
+#获取程序运行状态方法
+function status(){
+    is_running          #获取pid
+    if [ $? -eq '0' ]    #返回0，表示没有运行
+        echo "${app_name} is not running"
+    else
+        echo "${app_name} is running at pid: ${pid}"   #返回1，表示在运行
+    fi
+}
+
+
+################程序入口#################
+status</code></pre>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="http://ww1.sinaimg.cn/large/006kFCeSgy1gaqn983uxvj30rk044dia.jpg" alt=""></p>
+<blockquote>
+<p><code>scripts</code>目录里面就是那些<code>.sh</code>脚本文件， <code>project</code>目录下放的jar包应用程序：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006kFCeSgy1gaqndjyp0ij30ui03wjtx.jpg" alt=""></p>
+<p>由于<code>脚本文件</code>在<code>scripts</code>下，而<code>jar</code>在<code>project</code>下，所以在<code>application.sh</code>中，是通过这样来定位<code>jar包的：</code></p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">app_path=$current_path/project/$app_name</code></pre>
+<h3 id="尝试一键部署"><a href="#尝试一键部署" class="headerlink" title="尝试一键部署"></a>尝试一键部署</h3><blockquote>
+<p>在<code>script</code>目录下，</p>
+<p>执行<code>./start.sh</code>即可启动应用程序</p>
+<p>执行<code>./stop.sh</code>即可关闭应用程序</p>
+<p>执行<code>./restart.sh</code>可以对应用重启</p>
+<p>执行<code>./status.sh</code>查看运行状态</p>
+</blockquote>
+<h3 id="如何用在你的项目上？"><a href="#如何用在你的项目上？" class="headerlink" title="如何用在你的项目上？"></a>如何用在你的项目上？</h3><blockquote>
+<p>按照我的目录结构：</p>
+<ul>
+<li>拷贝<code>project目录</code>和<code>script</code>目录</li>
+<li>将你的jar包如<code>xxx.jar</code>复制到<code>project目录下</code></li>
+<li>更改<code>application.sh</code>，将里面的<code>app_name='demo.jar'</code> 改成 <code>app_name='xxx.jar'</code></li>
+</ul>
+<p>然后就可以一键部署啦···</p>
+<p>我将此脚本放在了GitHub上了：<a href="https://github.com/uweii/deploy-scripts.git" target="_blank" rel="noopener">https://github.com/uweii/deploy-scripts.git</a></p>
+</blockquote>
+<p><strong>Over</strong> </p>
+<p>如果觉得需要更多技术干货, 来我的CSDN 和 GitHub哦</p>
+<blockquote>
+<p>CSDN:  <a href="https://blog.csdn.net/dummyo" target="_blank" rel="noopener">https://blog.csdn.net/dummyo</a></p>
+<p>Github: <a href="https://github.com/uweii" target="_blank" rel="noopener">https://github.com/uweii</a></p>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -534,7 +762,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">吴伟</a>
+                    <a href="https://uweii.github.io" rel="external nofollow noreferrer">uwei</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -544,7 +772,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uweii.github.io/2019/11/30/morning/">https://uweii.github.io/2019/11/30/morning/</a>
+                    <a href="https://uweii.github.io/2020/01/09/deploy-script/">https://uweii.github.io/2020/01/09/deploy-script/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,7 +785,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://uweii.github.io" target="_blank">吴伟</a>
+                    <a href="https://uweii.github.io" target="_blank">uwei</a>
                     !
                 </span>
             </div>
@@ -581,7 +809,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/Shell-Script/">
+                                    <span class="chip bg-color">Shell Script</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1008,50 +1244,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/30/ifiloveu/">
+                <a href="/2020/01/09/deploy-script/">
                     <div class="card-image">
                         
+                        <img src="http://ww1.sinaimg.cn/large/006kFCeSgy1gaqnypsoguj30l20amwwr.jpg" class="responsive-img" alt="Linux下一键部署应用程序脚本">
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="致橡树">
-                        
-                        <span class="card-title">致橡树</span>
+                        <span class="card-title">Linux下一键部署应用程序脚本</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我如果爱你, 绝不像攀援的凌霄花, 借你的高枝炫耀自己.
+                            不得不看的Linux下一键部署项目脚本
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%97%E6%96%87/" class="post-category">
-                                    诗文
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BE%8E%E6%96%87/">
-                        <span class="chip bg-color">美文</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/%E8%87%B4%E6%A9%A1%E6%A0%91/">
-                        <span class="chip bg-color">致橡树</span>
+                    <a href="/tags/Shell-Script/">
+                        <span class="chip bg-color">Shell Script</span>
                     </a>
                     
                 </div>
@@ -1065,40 +1302,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/30/goodnight/">
+                <a href="/2019/12/15/spring-session/">
                     <div class="card-image">
                         
+                        <img src="http://ww1.sinaimg.cn/large/006ewUczgy1g9xgwausxkj30u01bfhdv.jpg" class="responsive-img" alt="spring-session">
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="goodnight">
-                        
-                        <span class="card-title">goodnight</span>
+                        <span class="card-title">spring-session</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            偶 然我是天空里的一片云，
-偶尔投影在你的波心。
-你不必讶异，更无须欢喜，
-在转瞬间消灭了踪影。
-你我相逢在黑夜的海上，
-你有你的，我有我的，方向；
-你记得也好，最好你忘掉，
-在这交会时互放的光亮！
-
-        document.qu
+                            Springboot登录会话过期,重定向到登录界面.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%99%9A%E4%B8%8A/" class="post-category">
-                                    晚上
+                            <a href="/categories/Java%E5%90%8E%E5%8F%B0/" class="post-category">
+                                    Java后台
                                 </a>
                             
                             
@@ -1108,8 +1335,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%99%9A%E5%AE%89/">
-                        <span class="chip bg-color">晚安</span>
+                    <a href="/tags/springboot%E7%99%BB%E5%BD%95%E8%BF%87%E6%9C%9F/">
+                        <span class="chip bg-color">springboot登录过期</span>
+                    </a>
+                    
+                    <a href="/tags/springboot-session/">
+                        <span class="chip bg-color">springboot session</span>
                     </a>
                     
                 </div>
